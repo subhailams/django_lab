@@ -108,17 +108,21 @@ Step 7: Add Below Sessions Functions in app/views.py
 ```
 from django.shortcuts import render, HttpResponse
 
-def cookie_session(request):
-    request.session.set_test_cookie()
-    return HttpResponse("<h1>dataflair</h1>")
+def create_session(request):
+    request.session['name'] = 'username'
+    request.session['password'] = 'password123'
+    return HttpResponse("<h1>Demo<br> the session is set</h1>")
 
-def cookie_delete(request):
-    if request.session.test_cookie_worked():
-        request.session.delete_test_cookie()
-        response = HttpResponse("dataflair<br> cookie createed")
+
+def access_session(request):
+    response = "<h1>Welcome to Sessions of Demo</h1><br>"
+    if request.session.get('name'):
+        response += "Name : {0} <br>".format(request.session.get('name'))
+    if request.session.get('password'):
+        response += "Password : {0} <br>".format(request.session.get('password'))
+        return HttpResponse(response)
     else:
-        response = HttpResponse("Dataflair <br> Your browser doesnot accept cookies")
-    return response
+        return redirect('create/')
 ```
 
 Step 8: Add Below urls in aap/urls.py
