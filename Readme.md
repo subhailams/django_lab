@@ -171,11 +171,10 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 ```
 
-Final Step : 
-
+Final Step 
+-----
 
 Django REST Framework Browsable API
------
 
 If you are having trouble getting your code to execute, or are just curious, try out the Django REST Framework Browsable API.  If you type an `authemail` API endpoint into your browser, the Browsable API should appear (`runserver` should still be executing).  For example,
 
