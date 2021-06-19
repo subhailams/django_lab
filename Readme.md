@@ -20,6 +20,6 @@ pip install django
 
 Step 2: Start django project
 ```
-django-admin startproject django_app
+django-admin startproject django_project
 ```
 
