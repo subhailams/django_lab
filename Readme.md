@@ -3,6 +3,150 @@ Please Follow Below Steps
 1. [Download Python](https://www.python.org/downloads/)
 2. Ensure pip is installed with pip --version if not [install pip](https://pip.pypa.io/en/stable/installing/#installing-with-get-pip-py)
 
+# Django Cookies and Session Handling
+
+## Checking and Deleting cookies
+Step 1 : Setup Environment
+```
+pip install virtualenv
+```
+```
+virtualenv denv
+```
+```
+denv\Scripts\activate
+```
+
+Step 2: Install django
+
+```
+pip install django
+```
+
+Step 3: Start django project
+```
+django-admin startproject session_project
+```
+
+Step 4: Create a Django application
+
+```
+python manage.py startapp app
+```
+
+In the `settings.py` file of your project, include `app` and your application in `INSTALLED_APPS`. 
+
+```
+INSTALLED_APPS = [
+	...
+	'app',
+	...
+]
+
+```
+Add path in urls.py
+```
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('app.urls')),
+]
+
+```
+
+```
+python manage.py migrate
+```
+
+```
+python manage.py runserver
+```
+
+Step 5: Add Below Functions in app/views.py
+
+```
+from django.shortcuts import render, HttpResponse
+
+def cookie_session(request):
+    request.session.set_test_cookie()
+    return HttpResponse("<h1>dataflair</h1>")
+
+def cookie_delete(request):
+    if request.session.test_cookie_worked():
+        request.session.delete_test_cookie()
+        response = HttpResponse("dataflair<br> cookie createed")
+    else:
+        response = HttpResponse("Dataflair <br> Your browser doesnot accept cookies")
+    return response
+```
+
+Step 6: Add Below urls in aap/urls.py
+
+```
+from django.urls import path, include
+from . import views
+
+urlpatterns = [
+    path('testcookie/', views.cookie_session),
+    path('deletecookie/', views.cookie_delete),
+
+]
+
+```
+
+```
+python manage.py runserver
+```
+
+## Creating & Accessing Django Sessions
+
+
+Step 7: Add Below Sessions Functions in app/views.py
+
+```
+from django.shortcuts import render, HttpResponse
+
+def cookie_session(request):
+    request.session.set_test_cookie()
+    return HttpResponse("<h1>dataflair</h1>")
+
+def cookie_delete(request):
+    if request.session.test_cookie_worked():
+        request.session.delete_test_cookie()
+        response = HttpResponse("dataflair<br> cookie createed")
+    else:
+        response = HttpResponse("Dataflair <br> Your browser doesnot accept cookies")
+    return response
+```
+
+Step 8: Add Below urls in aap/urls.py
+
+```
+from django.urls import path, include
+from . import views
+
+urlpatterns = [
+    path('testcookie/', views.cookie_session),
+    path('deletecookie/', views.cookie_delete),
+    path('create/', views.create_session),
+    path('access', views.access_session),
+]
+
+```
+
+```
+python manage.py migrate
+```
+
+```
+python manage.py runserver
+```
+
+Go to  http://127.0.0.1:8000/create
+Go to  http://127.0.0.1:8000/access
+
 # Django Sending Emails and REST APIs
 
 Step 1 : Setup Environment
@@ -196,4 +340,6 @@ Goto http://127.0.0.1:8000/api/accounts/signup/verify/?code=e53c0e8fb6ede000f7e4
 
 
 Link from email directly will not work, you have to append 'api/accounts/' before 'signup/'
+
+
 
