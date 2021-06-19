@@ -216,17 +216,6 @@ AUTH_USER_MODEL = 'accounts.MyUser'
 
 ```
 
-Create Super User Admin
-```
-python manage.py createsuperuser
-```
-
-Check your setup by starting a Web server on your local machine:
-
-```
-python manage.py runserver
-```
-
 Step 6: Create Database model for your user data.
 
 In the `accounts/models.py` file of your application,
