@@ -188,3 +188,11 @@ Then click on `POST`.  You will either receive an error message to help in your 
 If not working turn on less secure apps
 https://myaccount.google.com/u/1/lesssecureapps?pli=1&pageId=none
 
+After receiving the code goto below url by adding the code like below. For examples,
+
+```
+http://127.0.0.1:8000/api/accounts/signup/verify/?code=e53c0e8fb6ede000f7e4b260443348b162b85229
+```
+
+Link from email directly will not work, you have to append 'api/accounts/' before 'signup/'
+
