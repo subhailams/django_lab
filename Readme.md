@@ -3,7 +3,7 @@ Please Follow Below Steps
 1. [Download Python](https://www.python.org/downloads/)
 2. Ensure pip is installed with pip --version if not [install pip](https://pip.pypa.io/en/stable/installing/#installing-with-get-pip-py)
 
-#Django Sending Emails and REST APIs
+# Django Sending Emails and REST APIs
 
 Step 1 : Setup Environment
 ```
